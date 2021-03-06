@@ -1,0 +1,23 @@
+Procédures¶
+
+Django peut créer les migrations à votre place. Modifiez vos modèles - par exemple en ajoutant un champ ou en supprimant un modèle - puis exécutez makemigrations:
+
+
+$ python manage.py makemigrations
+Migrations for 'books':
+  books/migrations/0003_auto.py:
+    - Alter field author on book
+
+Les modèles sont analysés et comparés aux versions actuellement contenues dans les fichiers de migration.
+Puis, un nouveau jeu de migrations est rédigé.
+Il est chaudement conseillé de lire le résultat produit pour voir ce que makemigrations a détecté comme changements.
+Cette commande n’est pas parfaite, et pour des changements complexes, il se peut qu’elle n’ait pas détecté ce que vous attendiez.
+
+
+Lorsque les nouveaux fichiers de migration sont créés, on peut les appliquer à la base de données pour s’assurer qu’ils fonctionnent correctement :
+$ python manage.py migrate
+Operations to perform:
+  Apply all migrations: books
+Running migrations:
+  Rendering model states... DONE
+  Applying books.0003_auto... OK
