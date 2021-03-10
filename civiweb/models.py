@@ -36,6 +36,8 @@ class Country(models.Model):
 class City(models.Model):
     cityName = models.CharField(max_length=254)
     cityNameEn = models.CharField(max_length=254, null=True)
+    latitude = models.FloatField(null=True)
+    longitude = models.FloatField(null=True)
     country = models.ForeignKey(Country, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
