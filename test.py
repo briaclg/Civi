@@ -9,6 +9,7 @@ django.setup()
 
 from civiweb.models import Country, Company, City, Contact, Offer
 
+
 # Desc view counter
 # print(Offer.objects.all().values().order_by('-viewCounter'))
 
@@ -55,6 +56,6 @@ from civiweb.models import Country, Company, City, Contact, Offer
 
 # ------------------------------------------------------------------------------
 
-# Contact.objects.filter(contactName__contains='Planche')[0]
 
-Offer.objects.filter(active=False)
+# ------------------------------------------------------------------------------
+Contact.objects.filter(contactName__contains='Alessandra')

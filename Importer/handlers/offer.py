@@ -102,7 +102,12 @@ class OfferImport(BaseDataFormat):
                     'organization': company
                 },
             )
-
+            # See last offer
+            if dateparse.parse_datetime(offer['creationDate']) >= dateparse.parse_datetime('2021-03-25T16:00:00.00')\
+                    or dateparse.parse_datetime(offer['startBroadcastDate']) > dateparse.parse_datetime('2021-03'
+                                                                                                        '-25T00:00:00'
+                                                                                                        '.00'):
+                print(True)
             all_offers_active.append(offer_object.offerCode)
 
         Not_active_offers = Offer.objects.exclude(offerCode__in=all_offers_active)
@@ -110,7 +115,3 @@ class OfferImport(BaseDataFormat):
         for na_offers in Not_active_offers:
             na_offers.active = False
             na_offers.save()
-
-            # See last offer
-            # if dateparse.parse_datetime(offer['creationDate']) > dateparse.parse_datetime('2021-06-03T00:00:00.00'):
-            #     print(True)
